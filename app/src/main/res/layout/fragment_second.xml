@@ -29,10 +29,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_addtwo"
         android:layout_width="184dp"
         android:layout_height="103dp"
-        android:text="Button"
+        android:text="+2"
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="190dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
