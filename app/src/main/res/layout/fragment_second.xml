@@ -10,12 +10,8 @@
         android:id="@+id/textview_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.603" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_second"
@@ -32,7 +28,27 @@
         android:id="@+id/button_addtwo"
         android:layout_width="184dp"
         android:layout_height="103dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="203dp"
+        android:layout_marginEnd="688dp"
+        android:layout_marginBottom="234dp"
         android:text="+2"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="190dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_lesstwo"
+        android:layout_width="184dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="359dp"
+        android:layout_marginTop="203dp"
+        android:layout_marginEnd="417dp"
+        android:layout_marginBottom="234dp"
+        android:text="-2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

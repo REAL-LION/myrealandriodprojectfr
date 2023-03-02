@@ -45,6 +45,14 @@ public class SecondFragment extends Fragment {
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });
+        binding.buttonLesstwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                f.getSelectedTeacher().setPoints(f.getSelectedTeacher().getPoints()-2);
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+            }
+        });
     }
 
     @Override
