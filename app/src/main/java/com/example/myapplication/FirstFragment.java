@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
@@ -25,7 +26,7 @@ public class FirstFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
+//google firstfrag access from main activity
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         teacherList = createTeacherList();
         return binding.getRoot();
@@ -34,6 +35,7 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
         teacherList = updateTeacherListfromSelected();
 
@@ -66,6 +68,10 @@ public class FirstFragment extends Fragment {
             }
         });
 
+
+
+
+// Load and use views afterwards
 
 
 
