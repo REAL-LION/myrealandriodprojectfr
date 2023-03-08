@@ -5,6 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
@@ -22,16 +28,26 @@ public class FirstFragment extends Fragment {
     private Teacher selectedTeacher;
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
-//google firstfrag access from main activity
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
-        teacherList = createTeacherList();
-        return binding.getRoot();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle   savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_second, container, false);
+        TextView Scores = (TextView) inflater.inflate(R.layout.fragment_first, container, false);
+        // mWebView = (WebView) view.findViewById(R.id.activity_main_webview);
+        // progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
 
+        Scores.setText(updateTeacherScores());
+
+        {
+//google firstfrag access from main activity
+            binding = FragmentFirstBinding.inflate(inflater, container, false);
+            teacherList = createTeacherList();
+
+
+            return binding.getRoot();
+
+        }
     }
+
+
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -150,6 +166,7 @@ public class FirstFragment extends Fragment {
     }
 
     public String updateTeacherScores() {
+
         String s = "";
         int vP = 0;
         int oP = 0;
@@ -166,6 +183,9 @@ public class FirstFragment extends Fragment {
 
     return s;
     }
+
+
+
 /*
     public void handleText(View v){
         EditText t =findViewById(R.id.source);
