@@ -15,7 +15,7 @@ import com.example.myapplication.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    private FirstFragment f;
+    private FirstFragment f = new FirstFragment();
 
     @Override
     public View onCreateView(

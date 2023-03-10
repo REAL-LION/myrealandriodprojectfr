@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
@@ -24,23 +25,27 @@ import java.util.ArrayList;
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
-    private ArrayList<Teacher> teacherList;
-    private Teacher selectedTeacher;
+    private static boolean start=true;
+    private static ArrayList<Teacher> teacherList;
+    private static Teacher selectedTeacher = new Teacher();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle   savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_second, container, false);
-        TextView Scores = (TextView) inflater.inflate(R.layout.fragment_first, container, false);
+       // View view = inflater.inflate(R.layout.fragment_second, container, false);
+       // TextView Scores = (TextView) inflater.inflate(R.layout.fragment_first, container, false);
         // mWebView = (WebView) view.findViewById(R.id.activity_main_webview);
         // progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
 
-        Scores.setText(updateTeacherScores());
+        //Scores.setText(updateTeacherScores());
 
         {
 //google firstfrag access from main activity
             binding = FragmentFirstBinding.inflate(inflater, container, false);
-            teacherList = createTeacherList();
 
+            if(start) {
+                teacherList = createTeacherList();
+            start=false;
+            }
 
             return binding.getRoot();
 
@@ -52,8 +57,8 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         teacherList = updateTeacherListfromSelected();
+        ((MainActivity)getActivity()).updateTextView(updateTeacherScoresfromList());
 
                 binding.buttonViers.setOnClickListener(new View.OnClickListener() {
 
@@ -130,17 +135,26 @@ public class FirstFragment extends Fragment {
         return temp;
     }
 
-    public ArrayList<Teacher> updateTeacherListfromSelected() {
+    public static ArrayList<Teacher> updateTeacherListfromSelected() {
         int vP = 0;
         int oP = 0;
         int gP = 0;
 
+        for (Teacher t : teacherList) {
+            if (t.getTeacherName() == "viers")
+                vP = t.getPoints();
+            if (t.getTeacherName() == "otano")
+                oP = t.getPoints();
+            if (t.getTeacherName() == "guru")
+                oP = t.getPoints();
+        }
+
         if (selectedTeacher.getTeacherName() == "viers")
-            vP = selectedTeacher.getPoints();
+            vP += selectedTeacher.getPoints();
         if (selectedTeacher.getTeacherName() == "otano")
-            oP = selectedTeacher.getPoints();
+            oP += selectedTeacher.getPoints();
         if (selectedTeacher.getTeacherName() == "guru")
-            gP = selectedTeacher.getPoints();
+            gP += selectedTeacher.getPoints();
 
         ArrayList<Teacher> temp = new ArrayList<>();
         temp.add(new Teacher("viers", vP));
@@ -182,6 +196,26 @@ public class FirstFragment extends Fragment {
         s="SCORE:\n \nViers: "+vP+"\n \nOtano: "+oP+"\n \nGuru: "+gP+"\n";
 
     return s;
+    }
+
+    public String updateTeacherScoresfromList() {
+        String s = "";
+        int vP = 0;
+        int oP = 0;
+        int gP = 0;
+
+        for (Teacher t : teacherList) {
+            if (t.getTeacherName() == "viers")
+                vP = t.getPoints();
+            if (t.getTeacherName() == "otano")
+                oP = t.getPoints();
+            if (t.getTeacherName() == "guru")
+                oP = t.getPoints();
+        }
+
+
+        s="SCORE:\n \nViers: "+vP+"\n \nOtano: "+oP+"\n \nGuru: "+gP+"\n";
+        return s;
     }
 
 

@@ -23,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    TextView Scores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.fragment_first);
 
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -46,11 +47,20 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+       Scores= (TextView) findViewById(R.id.Scores);
+       // Scores.setText("blahhhhhh");
+
+
     }
     public void updateTextView(String toThis) {
+
         TextView textView = (TextView) findViewById(R.id.Scores);
         textView.setText(toThis);
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -79,4 +89,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }
